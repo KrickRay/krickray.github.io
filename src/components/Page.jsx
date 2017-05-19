@@ -17,6 +17,9 @@ export default class Page extends React.Component {
         '@media print': {
             margin: 0,
             background: '#fff'
+        },
+        '@media screen and (max-width: 210mm)': {
+            margin: 0
         }
     };
 
