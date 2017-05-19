@@ -78,7 +78,10 @@ export default class Content extends React.Component {
             height: '100%',
             margin: '0 40px',
             padding: '25px 0',
-            position: 'relative'
+            position: 'relative',
+            '@media screen and (max-width: 560px)': {
+                margin: '0 4%'
+            }
         },
         skill: {
             backgroundColor: '#e6e6e6',
@@ -88,6 +91,19 @@ export default class Content extends React.Component {
             marginBottom: 5,
             lineHeight: 1.6,
             display: 'inline-block'
+        },
+        icon: {
+            backgroundColor: '#666',
+            color: '#fff',
+            width: 19,
+            lineHeight: '19px',
+            display: 'inline-block',
+            textAlign: 'center',
+            borderRadius: '100%',
+            cursor: 'pointer',
+            ':hover': {
+                opacity: 0.5
+            }
         }
     };
 
@@ -141,8 +157,8 @@ export default class Content extends React.Component {
                         </tr>
                         <tr>
                             <td><b>{RU ? 'Номер телефона' : 'Phone number'}</b></td>
-                            <td>{cv.phoneNumber} <i className="mdi mdi-whatsapp" style={{color: '#666'}}/> <a
-                                className="mdi mdi-telegram" href="https://telegram.me/krick_ray" target="blank"/></td>
+                            <td>{cv.phoneNumber} <i className="mdi mdi-whatsapp" style={{...styles.icon, backgroundColor: '#11AE09'}}/> <a
+                                className="mdi mdi-telegram" href="https://telegram.me/krick_ray" target="blank" key="telegram" style={{...styles.icon, backgroundColor: '#2DA5E1'}}/></td>
                         </tr>
                         <tr>
                             <td><b>Email</b></td>
@@ -151,10 +167,10 @@ export default class Content extends React.Component {
                         <tr>
                             <td><b>{RU ? 'Социальные сети' : 'Social network'}</b></td>
                             <td>
-                                <a className="mdi mdi-vk" href="https://vk.com/krikray" target="blank"/>
-                                <a className="mdi mdi-skype" href="skype:encasor@yandex.ru" target="blank"/>
-                                <a className="mdi mdi-github-circle" href="https://github.com/KrickRay" target="blank"/>
-                                <a className="mdi mdi-npm" href="https://www.npmjs.com/~krickray" target="blank"/>
+                                <a key="vk" style={{...styles.icon, backgroundColor: '#507299'}} className="mdi mdi-vk" href="https://vk.com/krikray" target="blank"/>
+                                {' '}<a key="skype" style={{...styles.icon, backgroundColor: '#00AFF0'}} className="mdi mdi-skype" href="skype:encasor@yandex.ru" target="blank"/>
+                                {' '}<a key="gh" style={{...styles.icon, backgroundColor: '#010101'}} className="mdi mdi-github-circle" href="https://github.com/KrickRay" target="blank"/>
+                                {' '}<a key="npm" style={{...styles.icon, backgroundColor: '#CC0000'}} className="mdi mdi-npm" href="https://www.npmjs.com/~krickray" target="blank"/>
                             </td>
                         </tr>
                     </table>

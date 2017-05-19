@@ -20,6 +20,7 @@ export default {
                 'Node.js',
                 'React',
                 'Redux',
+                'Angular',
                 'Arduino',
                 'Java',
                 'C#',
@@ -127,6 +128,7 @@ export default {
                 'Node.js',
                 'React',
                 'Redux',
+                'Angular',
                 'Arduino',
                 'Java',
                 'C#',
@@ -162,9 +164,9 @@ export default {
         },
         timeline: [
             {
-                title: 'Higher education',
+                title: 'Education',
                 type: 'education',
-                description: 'Software Engineering bachelor',
+                description: `Bachelor's degree in Software Engineering`,
                 time: [new Date(2012, 8, 1), new Date(2016, 5, 23)],
                 document: 'Диплом бакалавра по специальности "Программная инженерия"',
                 place: {
@@ -193,7 +195,7 @@ export default {
                     town: 'Ekaterinburg',
                 }
             }, {
-                title: 'Operator of a scientific company',
+                title: 'Operator of scientific company',
                 type: 'education',
                 time: [new Date(2016, 6, 7), new Date(2017, 6, 6)],
                 description: 'Development of a web-based monitoring service for network equipment',
