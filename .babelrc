@@ -17,5 +17,18 @@
   "plugins": [
     "transform-decorators-legacy",
     "react-hot-loader/babel"
-  ]
+  ],
+  "env": {
+    "production": {
+      "presets": [
+        [
+          "babili",
+          {
+            "removeConsole": true,
+            "removeDebugger": true
+          }
+        ]
+      ]
+    }
+  }
 }
