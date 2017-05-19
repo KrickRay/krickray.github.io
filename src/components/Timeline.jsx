@@ -87,7 +87,7 @@ class Line extends React.Component {
                 <div style={styles.content}>
                     <h2>{title}</h2>
                     <p>{description}</p>
-                    <p><b>{place.town}</b>, <i>{place.department} {place.name}</i></p>
+                    <p><b>{place.town}</b>, <i>{locale === 'en' ? `${place.name} (${place.department})` : `${place.department} ${place.name}`}</i></p>
                 </div>
             </div>
         );
