@@ -21,7 +21,8 @@ class Line extends React.Component {
             minWidth: 170,
             '@media screen and (max-width: 560px)': {
                 display: 'block',
-                border: 'none'
+                border: 'none',
+                padding: 0
             }
         },
         dateContent: {
@@ -48,7 +49,9 @@ class Line extends React.Component {
             paddingRight: 0,
             verticalAlign: 'top',
             '@media screen and (max-width: 560px)': {
-                display: 'block'
+                display: 'block',
+                padding: 0,
+                paddingBottom: 20
             }
         }
     };
