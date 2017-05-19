@@ -1,6 +1,7 @@
 import React from 'react'
 import resume from '../resume/arsaev'
 import Switch from './Switch'
+import Timeline from './Timeline'
 
 function getQueryParams(qs) {
     qs = qs.split('+').join(' ');
@@ -56,44 +57,60 @@ export default class Content extends React.Component {
         const {styles} = Content;
         return (
             <div style={styles.content}>
-                <Switch leftLabel="ru"
-                        rightLabel="en"
-                        active={lang === 'ru' ? 0 : 1}
-                        style={{position: 'absolute', right: 0}}
-                        onClick={e => {
-                            //console.log();
-                            const nextLang = lang === 'ru' ? 'en' : 'ru';
-                            this.setState({lang: nextLang});
-                            const nextUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + createQueryString({
-                                    ...getQueryParams(document.location.search),
-                                    lang: nextLang
-                                });
-                            window.history.pushState({path: nextUrl}, '', nextUrl);
-                        }}/>
-                <div style={{display: 'table'}}>
+                <div style={{display: 'table', width: '100%'}}>
                     <div style={{display: 'table-cell', verticalAlign: 'middle'}}>
                         <img src="/public/images/me.jpg" alt=""
                              style={{height: 100, borderRadius: '100%', position: 'relative', float: 'left'}}/>
                     </div>
-                    <div style={{display: 'table-cell', verticalAlign: 'middle', paddingLeft: '30px'}}>
+                    <div style={{display: 'table-cell', verticalAlign: 'middle', paddingLeft: '30px', width: '100%'}}>
                         <h1 style={{marginBottom: 7}}>{cv.name}</h1>
                         <span>{cv.title}</span>
+                    </div>
+                    <div style={{display: 'table-cell', verticalAlign: 'middle', paddingLeft: '30px', textAlign: 'right'}}>
+                        <Switch leftLabel="ru"
+                                rightLabel="en"
+                                active={lang === 'ru' ? 0 : 1}
+                                style={{whiteSpace: 'nowrap'}}
+                                onClick={e => {
+                                    //console.log();
+                                    const nextLang = lang === 'ru' ? 'en' : 'ru';
+                                    this.setState({lang: nextLang});
+                                    const nextUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + createQueryString({
+                                            ...getQueryParams(document.location.search),
+                                            lang: nextLang
+                                        });
+                                    window.history.pushState({path: nextUrl}, '', nextUrl);
+                                }}/>
                     </div>
                 </div>
                 <br/>
                 <div>
                     <table>
                         <tr>
+                            <td><b>{RU ? 'Место жительства' : 'Location'}</b></td>
+                            <td>{cv.location}</td>
+                        </tr>
+                        <tr>
                             <td><b>{RU ? 'Возраст' : 'Age'}</b></td>
                             <td>{Math.floor((Date.now() - cv.birthday) / 1000 / 3600 / 24 / 365)}</td>
                         </tr>
                         <tr>
                             <td><b>{RU ? 'Номер телефона' : 'Phone number'}</b></td>
-                            <td>{cv.phoneNumber}</td>
+                            <td>{cv.phoneNumber} <i className="mdi mdi-whatsapp" style={{color: '#666'}}/> <a
+                                className="mdi mdi-telegram" href="https://telegram.me/krick_ray" target="blank"/></td>
                         </tr>
                         <tr>
-                            <td><b>{RU ? 'Место жительства' : 'Location'}</b></td>
-                            <td>{cv.location}</td>
+                            <td><b>Email</b></td>
+                            <td>{cv.email}</td>
+                        </tr>
+                        <tr>
+                            <td><b>{RU ? 'Социальные сети' : 'Social network'}</b></td>
+                            <td>
+                                <a className="mdi mdi-vk" href="https://vk.com/krikray" target="blank"/>
+                                <a className="mdi mdi-skype" href="skype:encasor@yandex.ru" target="blank"/>
+                                <a className="mdi mdi-github-circle" href="https://github.com/KrickRay" target="blank"/>
+                                <a className="mdi mdi-npm" href="https://www.npmjs.com/~krickray" target="blank"/>
+                            </td>
                         </tr>
                     </table>
                     <p>{cv.description}</p>
@@ -110,7 +127,16 @@ export default class Content extends React.Component {
                             </div>);
                         })
                     }
-                    <p></p>
+                    <br/>
+                    <Timeline>
+                        {
+                            cv.timeline.map(line => {
+                                return (
+                                    <Timeline.Line locale={lang} {...line}/>
+                                )
+                            })
+                        }
+                    </Timeline>
                 </div>
             </div>
         );
